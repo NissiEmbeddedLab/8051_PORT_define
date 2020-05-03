@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\5_PORT_define.obj" 
+TO ".\Objects\5_PORT_define" 
+PRINT(".\Listings\5_PORT_define.m51") RAMSIZE(256) 

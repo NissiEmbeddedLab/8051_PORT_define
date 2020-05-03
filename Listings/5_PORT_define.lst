@@ -1,0 +1,45 @@
+C51 COMPILER V9.60.0.0   5_PORT_DEFINE                                                     05/03/2020 12:04:17 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 5_PORT_DEFINE
+OBJECT MODULE PLACED IN .\Objects\5_PORT_define.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 5_PORT_define.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\5_PORT_define.lst) TABS(2) OBJECT(.\Objects\5_PORT_define.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #define BSc_EC P1
+   3          #define BE_EC P2
+   4          void MSDelay(unsigned int itime);
+   5          unsigned int x;
+   6          void main(void)
+   7          {
+   8   1      for(x=0;x<255;x++)
+   9   1      {
+  10   2        BSc_EC = x;
+  11   2        BE_EC = 0xFF-x;
+  12   2        MSDelay(100);
+  13   2      }
+  14   1      MSDelay(1000);
+  15   1      }
+  16          void MSDelay(unsigned int itime)
+  17          {
+  18   1      unsigned int i,j;
+  19   1      for(i=0;i<itime;i++)
+  20   1      for(j=0;j<1275;j++);
+  21   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     78    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
