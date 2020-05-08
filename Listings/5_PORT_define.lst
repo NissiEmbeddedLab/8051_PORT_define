@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   5_PORT_DEFINE                                                     05/03/2020 12:04:17 PAGE 1   
+C51 COMPILER V9.60.0.0   5_PORT_DEFINE                                                     05/08/2020 12:14:34 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 5_PORT_DEFINE
@@ -8,27 +8,33 @@ COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE 5_PORT_define.c OPTIMIZE(8,SPEED
 
 line level    source
 
-   1          #include<reg51.h>
-   2          #define BSc_EC P1
-   3          #define BE_EC P2
-   4          void MSDelay(unsigned int itime);
-   5          unsigned int x;
-   6          void main(void)
-   7          {
-   8   1      for(x=0;x<255;x++)
-   9   1      {
-  10   2        BSc_EC = x;
-  11   2        BE_EC = 0xFF-x;
-  12   2        MSDelay(100);
-  13   2      }
-  14   1      MSDelay(1000);
-  15   1      }
-  16          void MSDelay(unsigned int itime)
-  17          {
-  18   1      unsigned int i,j;
-  19   1      for(i=0;i<itime;i++)
-  20   1      for(j=0;j<1275;j++);
+   1          /*  It is an examole to declare the PORT using #define directive
+   2              MSDelay() function to create 10mSec delay
+   3              Author    : L.Boaz
+   4              Mail id   : laxsam89@gmail.com
+   5              Phone no  : +91 95972 91816 */
+   6          
+   7          #include<reg51.h>
+   8          #define BSc_EC P1                   //Assign the variable BSc_EC for PORT1
+   9          #define BE_EC P2                    //Assign the variable BE_EC for PORT2
+  10          void MSDelay(unsigned int itime);
+  11          unsigned int x;
+  12          void main(void)
+  13          {
+  14   1      for(x=0;x<255;x++)                  //Pass value from 0 to 255 or 0x00 to 0xff to PORT 1 & PORT 2
+  15   1      {
+  16   2        BSc_EC = x;                       //Pass from 0x00 to 0xff
+  17   2        BE_EC = 0xFF-x;                   //Pass from 0xFF to 0x00
+  18   2        MSDelay(100);                     //Elapse time for 1 sec by 10*100msec
+  19   2      }
+  20   1      MSDelay(1000);
   21   1      }
+  22          void MSDelay(unsigned int itime)
+  23          {
+  24   1      unsigned int i,j;
+  25   1      for(i=0;i<itime;i++)
+  26   1      for(j=0;j<1275;j++);
+  27   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
